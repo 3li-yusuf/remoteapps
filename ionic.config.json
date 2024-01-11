@@ -1,0 +1,7 @@
+{
+  "name": "remoteapps",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
