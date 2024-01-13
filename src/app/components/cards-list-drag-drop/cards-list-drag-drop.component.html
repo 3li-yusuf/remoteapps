@@ -1,0 +1,43 @@
+<div class="example-container">
+  <div
+    [style.backgroundColor]="listColor"
+    style="
+      margin-top: 10px;
+      border-radius: 8px 8px 0 0;
+    "
+  >
+    <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
+      {{listName}}
+    </h3>
+    <p style="text-align: center; border: 1px solid #fff;">{{listData.length}}</p>
+  </div>
+  <div
+    cdkDropList
+    [cdkDropListData]="listData"
+    class="example-list"
+    (cdkDropListDropped)="drop($event)"
+  >
+    <div class="example-box" *ngFor="let item of listData" cdkDrag>
+      <div style="display: flex">
+        <img src="{{item.pic}}" class="box-img" alt="" srcset="" />
+        <div>
+          <h6 style="margin: 0">{{ item.name }}</h6>
+          <p style="margin: 0">{{item.nationality}}</p>
+        </div>
+      </div>
+      <div style="display: flex; margin: 5px 0 0 0">
+        <div style="margin-right: 15px">
+          <img
+            src="../../assets/pictures/Thumbs-Up-Right-Side.svg"
+            alt=""
+          />
+          <img
+            src="../../assets/pictures/Thumbs-Down-Left-Side.svg"
+            alt=""
+          />
+        </div>
+        <p style="margin: 0 0 0 0">{{item.role}}</p>
+      </div>
+    </div>
+  </div>
+</div>

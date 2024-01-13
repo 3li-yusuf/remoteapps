@@ -1,4 +1,25 @@
 <ion-content [fullscreen]="true">
+  <ion-button
+  class="ion-margin" 
+  expand="block"
+  ion-long-press
+  (press)="onPress($event)"
+  (longPressed)="onPress($event)"
+  (pressEnded)="onPress($event)">
+  LONG PRESS GESTURE
+</ion-button><ion-button
+class="ion-margin" 
+expand="block"
+ion-long-press
+>
+LONG PRESS GESTURE
+</ion-button><ion-button
+class="ion-margin" 
+expand="block"
+ion-long-press
+>
+LONG PRESS GESTURE
+</ion-button>
   <!-- Toolbar -->
   <div style="display: flex; background-color: #00abec; padding: 0">
     <ion-title style="color: #fff"> Vacancies </ion-title>
@@ -22,7 +43,7 @@
     <div style="display: flex">
       <div style="margin-right: 30px; display: flex">
         <img src="../../assets/pictures/Job.svg" alt="" />
-        <p style="margin-left: 5px; color: #555555">2 Vacancies</p>
+        <p style="margin-left: 5px; color: #555555">Vacancies</p>
       </div>
       <div style="margin-right: 30px; display: flex">
         <img src="../../assets/pictures/Calendar-01.svg" alt="" />
@@ -50,8 +71,7 @@
         />
         <p style="color: #555555">Interviews</p>
       </button>
-      <button
-        style="
+      <button style="
           padding: 10px;
           margin: 10px;
           border: 1px solid #ccc;
@@ -73,180 +93,8 @@
     </div>
   </div>
 
-  <div class="outer-div" cdkDropListGroup>
-    <div class="example-container">
-      <div
-        style="
-          background-color: #f04438;
-          margin-top: 10px;
-          border-radius: 8px 8px 0 0;
-        "
-      >
-        <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
-          Applied
-        </h3>
-      </div>
-      <div
-        cdkDropList
-        [cdkDropListData]="items"
-        class="example-list"
-        (cdkDropListDropped)="drop($event)"
-      >
-        <div class="example-box" *ngFor="let item of items" cdkDrag>
-          <div style="display: flex">
-            <img src="{{item.pic}}" class="box-img" alt="" srcset="" />
-            <div>
-              <h6 style="margin: 0">{{ item.name }}</h6>
-              <p style="margin: 0">{{item.nationality}}</p>
-            </div>
-          </div>
-          <div style="display: flex; margin: 5px 0 0 0">
-            <div style="margin-right: 15px">
-              <img
-                src="../../assets/pictures/Thumbs-Up-Right-Side.svg"
-                alt=""
-              />
-              <img
-                src="../../assets/pictures/Thumbs-Down-Left-Side.svg"
-                alt=""
-              />
-            </div>
-            <p style="margin: 0 0 0 0">{{item.role}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div
-        style="
-          background-color: #f04438;
-          margin-top: 10px;
-          border-radius: 8px 8px 0 0;
-        "
-      >
-        <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
-          Shopping basket
-        </h3>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="basket"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of basket" cdkDrag>
-            <div style="display: flex">
-              <img src="{{item.pic}}" class="box-img" alt="" srcset="" />
-              <div>
-                <h6 style="margin: 0">{{ item.name }}</h6>
-                <p style="margin: 0">{{item.nationality}}</p>
-              </div>
-            </div>
-            <div style="display: flex; margin: 5px 0 0 0">
-              <div style="margin-right: 15px">
-                <img
-                  src="../../assets/pictures/Thumbs-Up-Right-Side.svg"
-                  alt=""
-                />
-                <img
-                  src="../../assets/pictures/Thumbs-Down-Left-Side.svg"
-                  alt=""
-                />
-              </div>
-              <p style="margin: 0 0 0 0">{{item.role}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div
-        style="
-          background-color: #f04438;
-          margin-top: 10px;
-          border-radius: 8px 8px 0 0;
-        "
-      >
-        <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
-          Stock
-        </h3>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="stock"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of stock" cdkDrag>
-            <div style="display: flex">
-              <img src="{{item.pic}}" class="box-img" alt="" srcset="" />
-              <div>
-                <h6 style="margin: 0">{{ item.name }}</h6>
-                <p style="margin: 0">{{item.nationality}}</p>
-              </div>
-            </div>
-            <div style="display: flex; margin: 5px 0 0 0">
-              <div style="margin-right: 15px">
-                <img
-                  src="../../assets/pictures/Thumbs-Up-Right-Side.svg"
-                  alt=""
-                />
-                <img
-                  src="../../assets/pictures/Thumbs-Down-Left-Side.svg"
-                  alt=""
-                />
-              </div>
-              <p style="margin: 0 0 0 0">{{item.role}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="example-container">
-      <div
-        style="
-          background-color: #f04438;
-          margin-top: 10px;
-          border-radius: 8px 8px 0 0;
-        "
-      >
-        <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
-          Grocery
-        </h3>
-
-        <div
-          cdkDropList
-          [cdkDropListData]="grocery"
-          class="example-list"
-          (cdkDropListDropped)="drop($event)"
-        >
-          <div class="example-box" *ngFor="let item of grocery" cdkDrag>
-            <div style="display: flex">
-              <img src="{{item.pic}}" class="box-img" alt="" srcset="" />
-              <div>
-                <h6 style="margin: 0">{{ item.name }}</h6>
-                <p style="margin: 0">{{item.nationality}}</p>
-              </div>
-            </div>
-            <div style="display: flex; margin: 5px 0 0 0">
-              <div style="margin-right: 15px">
-                <img
-                  src="../../assets/pictures/Thumbs-Up-Right-Side.svg"
-                  alt=""
-                />
-                <img
-                  src="../../assets/pictures/Thumbs-Down-Left-Side.svg"
-                  alt=""
-                />
-              </div>
-              <p style="margin: 0 0 0 0">{{item.role}}</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="second-div" cdkDropListGroup>
+    <app-general-card-lists [Lists]="[items, basket, stock, grocery, finalized]" [ListsColors]="['#f04438', '#ff692E','#FDB022', '#47CD89', '#079455']" [ListsHeaders]="['Applied','Shortlisted', 'Interviewed', 'Offered', 'Finalized']"></app-general-card-lists>
   </div>
 </ion-content>
+

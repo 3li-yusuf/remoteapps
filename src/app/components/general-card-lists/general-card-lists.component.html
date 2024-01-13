@@ -1,0 +1,9 @@
+<div class="second-div" cdkDropListGroup>
+  <div *ngFor="let list of Lists; let i = index">
+    <app-cards-list-drag-drop
+      [listName]="ListsHeaders[i]"
+      [listColor]="ListsColors[i]"
+      [listData]="list"
+    ></app-cards-list-drag-drop>
+  </div>
+</div>

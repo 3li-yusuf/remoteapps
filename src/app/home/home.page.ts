@@ -24,18 +24,6 @@ export class HomePage {
       nationality: 'Bahraini',
       role: 'HR Manager',
     },
-    {
-      pic: '../../assets/pictures/Image.jpg',
-      name: 'Khalil Alrashed',
-      nationality: 'Bahraini',
-      role: 'HR Manager',
-    },
-    {
-      pic: '../../assets/pictures/Image.jpg',
-      name: 'Khalil Alrashed',
-      nationality: 'Bahraini',
-      role: 'HR Manager',
-    },
   ];
   basket = [
     {
@@ -82,12 +70,6 @@ export class HomePage {
       nationality: 'Bahraini',
       role: 'HR Manager',
     },
-    {
-      pic: '../../assets/pictures/Image.jpg',
-      name: 'Khalil Alrashed',
-      nationality: 'Bahraini',
-      role: 'HR Manager',
-    },
   ];
   grocery = [
     {
@@ -114,7 +96,55 @@ export class HomePage {
       nationality: 'Bahraini',
       role: 'HR Manager',
     },
+    {
+      pic: '../../assets/pictures/Image.jpg',
+      name: 'Khalil Alrashed',
+      nationality: 'Bahraini',
+      role: 'HR Manager',
+    },
+    {
+      pic: '../../assets/pictures/Image.jpg',
+      name: 'Khalil Alrashed',
+      nationality: 'Bahraini',
+      role: 'HR Manager',
+    },
   ];
+  finalized = [
+    {
+      pic: '../../assets/pictures/Image.jpg',
+      name: 'Khalil Alrashed',
+      nationality: 'Bahraini',
+      role: 'HR Manager',
+    },
+    {
+      pic: '../../assets/pictures/Image.jpg',
+      name: 'Khalil Alrashed',
+      nationality: 'Bahraini',
+      role: 'HR Manager',
+    },
+    {
+      pic: '../../assets/pictures/Image.jpg',
+      name: 'Khalil Alrashed',
+      nationality: 'Bahraini',
+      role: 'HR Manager',
+    },
+    {
+      pic: '../../assets/pictures/Image.jpg',
+      name: 'Khalil Alrashed',
+      nationality: 'Bahraini',
+      role: 'HR Manager',
+    },
+  ];
+
+  onPress(event) {
+    console.log('press: ', event);
+  }
+  longPressed(event) {
+    console.log('longPressed: ', event);
+  }
+  pressEnded(event) {
+    console.log('pressEnded: ', event);
+  }
 
   drop(
     event: CdkDragDrop<

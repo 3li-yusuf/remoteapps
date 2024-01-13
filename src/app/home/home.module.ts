@@ -7,6 +7,8 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CardsListDragDropComponent } from '../components/cards-list-drag-drop/cards-list-drag-drop.component';
+import { GeneralCardListsComponent } from '../components/general-card-lists/general-card-lists.component';
 
 @NgModule({
   imports: [
@@ -17,6 +19,10 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     DragDropModule,
     ScrollingModule,
   ],
-  declarations: [HomePage],
+  declarations: [
+    HomePage,
+    CardsListDragDropComponent,
+    GeneralCardListsComponent,
+  ],
 })
 export class HomePageModule {}
