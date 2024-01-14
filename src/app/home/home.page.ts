@@ -136,14 +136,12 @@ export class HomePage {
     },
   ];
 
-  onPress(event) {
-    console.log('press: ', event);
+  onLongPress(event) {
+    console.log('Long Pressed!', event);
   }
-  longPressed(event) {
-    console.log('longPressed: ', event);
-  }
-  pressEnded(event) {
-    console.log('pressEnded: ', event);
+
+  tap() {
+    console.log('tap');
   }
 
   drop(

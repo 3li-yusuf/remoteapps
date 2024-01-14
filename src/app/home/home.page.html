@@ -1,28 +1,20 @@
 <ion-content [fullscreen]="true">
-  <ion-button
-  class="ion-margin" 
-  expand="block"
-  ion-long-press
-  (press)="onPress($event)"
-  (longPressed)="onPress($event)"
-  (pressEnded)="onPress($event)">
-  LONG PRESS GESTURE
-</ion-button><ion-button
-class="ion-margin" 
-expand="block"
-ion-long-press
->
-LONG PRESS GESTURE
-</ion-button><ion-button
-class="ion-margin" 
-expand="block"
-ion-long-press
->
-LONG PRESS GESTURE
-</ion-button>
+  <button class="ion-margin" expand="block" (longPress)="onLongPress($event)">
+    LONG PRESS GESTURE
+  </button>
+  <div (longPress)="onLongPress($event)">Click and hold me</div>
+
   <!-- Toolbar -->
-  <div style="display: flex; background-color: #00abec; padding: 0">
-    <ion-title style="color: #fff"> Vacancies </ion-title>
+  <div
+    style="
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #00abec;
+      padding: 0;
+    "
+  >
+    <h2 style="margin: auto 10px; color: #fff">Vacancies</h2>
     <button
       style="
         color: #00abec;
@@ -71,7 +63,8 @@ LONG PRESS GESTURE
         />
         <p style="color: #555555">Interviews</p>
       </button>
-      <button style="
+      <button
+        style="
           padding: 10px;
           margin: 10px;
           border: 1px solid #ccc;
@@ -94,7 +87,10 @@ LONG PRESS GESTURE
   </div>
 
   <div class="second-div" cdkDropListGroup>
-    <app-general-card-lists [Lists]="[items, basket, stock, grocery, finalized]" [ListsColors]="['#f04438', '#ff692E','#FDB022', '#47CD89', '#079455']" [ListsHeaders]="['Applied','Shortlisted', 'Interviewed', 'Offered', 'Finalized']"></app-general-card-lists>
+    <app-general-card-lists
+      [Lists]="[items, basket, stock, grocery, finalized]"
+      [ListsColors]="['#f04438', '#ff692E','#FDB022', '#47CD89', '#079455']"
+      [ListsHeaders]="['Applied','Shortlisted', 'Interviewed', 'Offered', 'Finalized']"
+    ></app-general-card-lists>
   </div>
 </ion-content>
-

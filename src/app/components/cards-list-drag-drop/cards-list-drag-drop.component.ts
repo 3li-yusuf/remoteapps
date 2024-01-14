@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, NgModule, OnInit } from '@angular/core';
 
 import {
   CdkDragDrop,
@@ -24,6 +24,9 @@ export class CardsListDragDropComponent implements OnInit {
 
   ngOnInit() {}
 
+  onLongPress(event) {
+    console.log('Long Pressed!', event);
+  }
   drop(
     event: CdkDragDrop<
       { pic: string; name: string; nationality: string; role: string }[]

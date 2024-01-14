@@ -2,98 +2,44 @@ import {
   Directive,
   ElementRef,
   EventEmitter,
-  Input,
-  NgZone,
-  OnDestroy,
-  OnInit,
+  HostListener,
   Output,
 } from '@angular/core';
-import * as Hammer from 'hammerjs';
-
-// const LONG_PRESS_DEFAULT_TIMEOUT = 500;
-
-// const MIN_LONG_PRESS_TIMEOUT = 40;
+import { Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 
 @Directive({
-  selector: '[ion-long-press]',
+  selector: '[appLongPress]',
 })
-export class PressDirective implements OnInit, OnDestroy {
-  @Input() interval: number;
+export class LongPressDirective {
+  @Output() longPress: EventEmitter<any> = new EventEmitter();
 
-  @Output() pressed: EventEmitter<any> = new EventEmitter();
-  @Output() longPressed: EventEmitter<any> = new EventEmitter();
-  @Output() pressEnded: EventEmitter<any> = new EventEmitter();
+  private destroy$: Subject<void> = new Subject();
+  private pressTimer: any;
 
-  private readonly el: HTMLElement;
-  private _hammer: HammerManager;
-  private int: number;
+  constructor(private el: ElementRef) {}
 
-  constructor(public zone: NgZone, el: ElementRef) {
-    this.el = el.nativeElement;
+  @HostListener('mousedown', ['$event'])
+  @HostListener('touchstart', ['$event'])
+  onMouseDown(event) {
+    this.startPressTimer(event);
   }
 
-  ngOnInit(): void {
-    if (!this.interval) this.interval = 500;
-    if (this.interval < 40) {
-      throw new Error(
-        "A limit of 40ms is imposed so you don't destroy device performance. If you need less than a 40ms interval, please file an issue explaining your use case."
-      );
-    }
-
-    this._hammer = new Hammer.Manager(this.el, {
-      recognizers: [
-        [Hammer.Pan, { direction: Hammer.DIRECTION_VERTICAL }],
-        [Hammer.Press],
-        [Hammer.Tap],
-      ],
-    });
-
-    this._hammer.on('pan', (e: any) => {
-      this.onPressEnd();
-    });
-
-    this._hammer.on('press', (e: any) => {
-      this.pressed.emit(e);
-      this.clearInt();
-      this.int = setInterval(() => {
-        this.longPressed.emit();
-      }, this.interval) as any;
-    });
-
-    this._hammer.on('pressup', (e: any) => {
-      this.onPressEnd();
-    });
-
-    this._hammer.on('release', (e: any) => {
-      this.onPressEnd();
-    });
-
-    this.el.addEventListener('mouseleave', (e: any) => {
-      this.onPressEnd();
-    });
-
-    this.el.addEventListener('mouseout', (e: any) => {
-      this.onPressEnd();
-    });
+  @HostListener('mouseup')
+  @HostListener('touchend')
+  onMouseUp() {
+    this.stopPressTimer();
   }
 
-  clearInt(): void {
-    if (this.int !== undefined) {
-      clearInterval(this.int);
-      this.int = undefined;
-    }
+  private startPressTimer(event) {
+    this.pressTimer = setTimeout(() => {
+      this.longPress.emit(event);
+    }, 500);
   }
 
-  onPressEnd(): void {
-    this.clearInt();
-    this.pressEnded.emit();
-  }
-
-  ngOnDestroy(): void {
-    this.onPressEnd();
-    if (this._hammer) {
-      this._hammer.destroy();
-      this._hammer = null;
-    }
+  private stopPressTimer() {
+    clearTimeout(this.pressTimer);
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

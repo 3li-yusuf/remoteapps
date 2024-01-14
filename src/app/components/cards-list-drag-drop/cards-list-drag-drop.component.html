@@ -3,13 +3,34 @@
     [style.backgroundColor]="listColor"
     style="
       margin-top: 10px;
+      border: solid 1px #ccc;
+      border-bottom: 0;
       border-radius: 8px 8px 0 0;
     "
   >
     <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
-      {{listName}}
+      {{ listName }}
     </h3>
-    <p style="text-align: center; border: 1px solid #fff;">{{listData.length}}</p>
+    <div
+      [style.backgroundColor]="listColor"
+      style="
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        border: 2px solid #fff;
+        border-radius: 50px;
+        color: white;
+        font-size: large;
+        width: 35px;
+        height: 35px;
+        position: relative;
+        top: 15px;
+      "
+    >
+      {{ listData.length }}
+    </div>
   </div>
   <div
     cdkDropList
@@ -17,26 +38,26 @@
     class="example-list"
     (cdkDropListDropped)="drop($event)"
   >
-    <div class="example-box" *ngFor="let item of listData" cdkDrag>
+    <div
+      class="example-box"
+      appLongPress
+      (longPress)="onLongPress($event)"
+      *ngFor="let item of listData"
+      cdkDrag
+    >
       <div style="display: flex">
-        <img src="{{item.pic}}" class="box-img" alt="" srcset="" />
+        <img src="{{ item.pic }}" class="box-img" alt="" srcset="" />
         <div>
           <h6 style="margin: 0">{{ item.name }}</h6>
-          <p style="margin: 0">{{item.nationality}}</p>
+          <p style="margin: 0">{{ item.nationality }}</p>
         </div>
       </div>
       <div style="display: flex; margin: 5px 0 0 0">
         <div style="margin-right: 15px">
-          <img
-            src="../../assets/pictures/Thumbs-Up-Right-Side.svg"
-            alt=""
-          />
-          <img
-            src="../../assets/pictures/Thumbs-Down-Left-Side.svg"
-            alt=""
-          />
+          <img src="../../assets/pictures/Thumbs-Up-Right-Side.svg" alt="" />
+          <img src="../../assets/pictures/Thumbs-Down-Left-Side.svg" alt="" />
         </div>
-        <p style="margin: 0 0 0 0">{{item.role}}</p>
+        <p style="margin: 0 0 0 0">{{ item.role }}</p>
       </div>
     </div>
   </div>

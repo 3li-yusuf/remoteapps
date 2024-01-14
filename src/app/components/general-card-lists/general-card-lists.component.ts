@@ -20,5 +20,10 @@ export class GeneralCardListsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('GeneralCardListsComponent initialized!');
+    console.log('Lists:', this.Lists);
+    console.log('ListsColors:', this.ListsColors);
+    console.log('ListsHeaders:', this.ListsHeaders);
+  }
 }

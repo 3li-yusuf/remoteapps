@@ -7,8 +7,9 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { CardsListDragDropComponent } from '../components/cards-list-drag-drop/cards-list-drag-drop.component';
 import { GeneralCardListsComponent } from '../components/general-card-lists/general-card-lists.component';
+import { LongPressDirective } from '../directives/holdable.directive';
+import { CardsListDragDropComponent } from '../components/cards-list-drag-drop/cards-list-drag-drop.component';
 
 @NgModule({
   imports: [
@@ -21,8 +22,9 @@ import { GeneralCardListsComponent } from '../components/general-card-lists/gene
   ],
   declarations: [
     HomePage,
-    CardsListDragDropComponent,
     GeneralCardListsComponent,
+    CardsListDragDropComponent,
+    LongPressDirective,
   ],
 })
 export class HomePageModule {}
