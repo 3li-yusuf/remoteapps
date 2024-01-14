@@ -34,7 +34,7 @@ export class LongPressDirective {
   private startPressTimer(event) {
     this.pressTimer = setTimeout(() => {
       this.longPress.emit(event);
-    }, 500);
+    }, 1000);
   }
 
   private stopPressTimer() {
