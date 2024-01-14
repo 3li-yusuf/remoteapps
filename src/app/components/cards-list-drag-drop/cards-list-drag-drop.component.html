@@ -6,6 +6,7 @@
       border: solid 1px #ccc;
       border-bottom: 0;
       border-radius: 8px 8px 0 0;
+      height: 55px;
     "
   >
     <h3 style="color: white; text-align: center; padding: 5px; margin: 0">
@@ -26,7 +27,7 @@
         width: 35px;
         height: 35px;
         position: relative;
-        top: 15px;
+        bottom: 3px;
       "
     >
       {{ listData.length }}
@@ -41,8 +42,8 @@
     <div
       class="example-box"
       appLongPress
-      (longPress)="onLongPress($event)"
-      *ngFor="let item of listData"
+      (longPress)="onLongPress($event, i)"
+      *ngFor="let item of listData; let i = index"
       cdkDrag
     >
       <div style="display: flex">
@@ -60,5 +61,46 @@
         <p style="margin: 0 0 0 0">{{ item.role }}</p>
       </div>
     </div>
+    <ion-modal id="example-modal" #modal [isOpen]="isModalOpen">
+      <ng-template>
+        <div class="wrapper">
+          <button
+            style="
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+              color: #555;
+            "
+            button="true"
+            detail="false"
+            (click)="closeModal()"
+          >
+            Disqulaify
+          </button>
+          <div
+            style="
+              height: 70%;
+              width: 1px;
+              border: 0.001px solid #b3b3b3;
+              border-radius: 50px;
+              margin: auto;
+            "
+          ></div>
+          <button
+            style="
+              width: 100%;
+              height: 100%;
+              background-color: #fff;
+              color: #555;
+            "
+            button="true"
+            detail="false"
+            (click)="closeModal()"
+          >
+            Answer
+          </button>
+        </div>
+      </ng-template>
+    </ion-modal>
   </div>
 </div>
